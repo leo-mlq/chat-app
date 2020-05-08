@@ -1,8 +1,8 @@
 //return promises
 import axios from 'axios'
 import { Toast } from 'antd-mobile'
-const baseUrl = ''
-// const baseUrl = 'http://localhost:4000'
+//const baseUrl = ''
+const baseUrl = 'https://leomei.site/chat/api'
 
 
 axios.interceptors.request.use(config => {

@@ -127,8 +127,9 @@ export const getListDispatcher = ()=>{
 
 function initIO(dispatch, userId){
 	if(!io.socket){
-		//console.log('socket initialized')
-		io.socket=io('ws://localhost:4000')
+		console.log('socket initialized')
+		io.socket=io('wss://leomei.site:19593/');
+		//io.socket=io('wss://leomei.site/chat/api/');
 		io.socket.on("userConnected", function(user){
 			console.log(user);
 		})
