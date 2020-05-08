@@ -19,6 +19,7 @@
     "dotenv": "^8.2.0",
     "ejs": "*",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
     "http-errors": "*",
     "moment": "^2.24.0",
     "mongodb": "*",

@@ -8,10 +8,17 @@ var cors = require("cors");
 var bodyParser = require("body-parser");
 var cookieParser = require('cookie-parser');
 var apiRoutes = require("./routes/api.js");
+var fs = require("fs");
 //var runner = require("./test-runner");
 
-const ioServer = require("http").Server(app);
+//const ioServer = require("http").Server(app);
+const options = {
+  key: fs.readFileSync('/userDisk/deployments/ssl/my-web/2_leomei.site.key'),
+  cert: fs.readFileSync('/userDisk/deployments/ssl/my-web/1_leomei.site_bundle.crt')
+}
+const ioServer = require("https").createServer(options);
 require('./socketIO/IOserver')(ioServer);
+
 
 // make all the files in 'public' available
 app.use("/public", express.static(process.cwd() + "/public"));
@@ -35,6 +42,7 @@ app.use(function middleware(req, res, next) {
 app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
+
 
 //Routing for API
 const routes = async () => {
@@ -64,15 +72,15 @@ const routes = async () => {
   });
 
   //socketIO server
-  ioServer.listen(4000, function (err) {
+  ioServer.listen(19593, function (err) {
     if (err) throw err
-    console.log('ioServer listening on port 4000')
+    console.log('ioServer listening on port 19593')
   });
 
   //Start our server and tests!
-  // app.listen(4000, function() {
-  //   console.log("Listening on port " + '4000');
-  // });
+  app.listen(19591, function() {
+    console.log("Listening on port " + '19591');
+  });
 
 };
 
